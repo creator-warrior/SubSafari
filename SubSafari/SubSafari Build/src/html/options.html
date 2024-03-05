@@ -34,12 +34,7 @@
     }
 
     .checkbox-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .checkbox-container input[type="checkbox"] {
-      margin-right: 10px;
+      display: block; /* Display checkboxes as block elements */
     }
 
     textarea {
@@ -97,14 +92,23 @@
     label:hover {
       color: #0056b3; /* Darker blue on hover */
     }
+
+    .scroll-box {
+      max-height: 150px; /* Set maximum height for the scroll box */
+      overflow-y: auto; /* Enable vertical scrolling */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>SubSafari Options</h1>
     <p>Select the sites you want to bypass paywalls for:</p>
-    <div class="checkbox-container" id="bypass_sites">
-      <!-- Checkboxes for supported sites will be added here dynamically -->
+    <div class="scroll-box">
+      <div class="checkbox-container" id="bypass_sites">
+        <!-- Checkboxes for supported sites will be added here dynamically -->
+      </div>
     </div>
     <p>Enter additional sites to bypass paywalls (one domain per line):</p>
     <textarea id="custom_sites" placeholder="Enter additional sites..."></textarea>
