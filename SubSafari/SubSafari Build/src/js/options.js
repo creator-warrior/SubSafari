@@ -55,7 +55,8 @@ function saveOptions () {
 
 // Restores checkbox input states using the preferences
 // stored in extensionApi.storage.
-function renderOptions () {
+// Render options
+function renderOptions() {
   extensionApi.storage.sync.get({
     sites: {},
     customSites: [],
@@ -64,6 +65,11 @@ function renderOptions () {
     const sites = items.sites;
     let bypassedSitesCount = 0; // Initialize bypassed sites count
     
+    // Clear the existing checkboxes
+    const bypassSitesContainer = $('#bypass_sites');
+    bypassSitesContainer.innerHTML = '';
+
+    // Loop through supported sites and add checkboxes
     for (const key in defaultSites) {
       if (!Object.prototype.hasOwnProperty.call(defaultSites, key)) {
         continue;
@@ -77,9 +83,21 @@ function renderOptions () {
       inputEl.dataset.value = value;
       inputEl.checked = (key in sites) || (key.replace(/\s\(.*\)/, '') in sites);
 
+      const linkEl = document.createElement('a'); // Create anchor element for clickable link
+      linkEl.textContent = key;
+      linkEl.href = 'https://' + value;
+
+      // Add event listener to open the corresponding website when clicked
+      linkEl.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        const siteUrl = this.href;
+        window.open(siteUrl, '_blank'); // Open the website in a new tab
+      });
+
       labelEl.appendChild(inputEl);
-      labelEl.appendChild(document.createTextNode(key));
-      $('#bypass_sites').appendChild(labelEl);
+      labelEl.appendChild(linkEl); // Append the anchor element instead of the plain text node
+      labelEl.appendChild(document.createElement('br')); // Add line break after each checkbox
+      bypassSitesContainer.appendChild(labelEl);
 
       // Increment bypassedSitesCount if the current site is checked
       if (inputEl.checked) {
@@ -94,9 +112,7 @@ function renderOptions () {
     // Update total bypassed sites count
     $('#totalSites').textContent = bypassedSitesCount;
 
-    // Set select all/none checkbox state.  Note: "indeterminate" checkboxes
-    // require `chrome_style: false` be set in manifest.json.  See
-    // https://bugs.chromium.org/p/chromium/issues/detail?id=1097489
+    // Set select all/none checkbox state
     const nItems = $$('input[data-key]').length;
     const nChecked = $$('input[data-key]').filter(el => el.checked).length;
     $('#select-all input').checked = nChecked / nItems > 0.5;
@@ -104,13 +120,6 @@ function renderOptions () {
   });
 }
 
-
-// Select/deselect all supported sites
-function selectAll () {
-  for (const el of $$('input[data-key]')) {
-    el.checked = this.checked;
-  };
-}
 
 // Initialize UI
 function init() {
