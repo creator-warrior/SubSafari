@@ -62,6 +62,8 @@ function renderOptions () {
   }, function (items) {
     // Render supported sites
     const sites = items.sites;
+    let bypassedSitesCount = 0; // Initialize bypassed sites count
+    
     for (const key in defaultSites) {
       if (!Object.prototype.hasOwnProperty.call(defaultSites, key)) {
         continue;
@@ -78,11 +80,19 @@ function renderOptions () {
       labelEl.appendChild(inputEl);
       labelEl.appendChild(document.createTextNode(key));
       $('#bypass_sites').appendChild(labelEl);
+
+      // Increment bypassedSitesCount if the current site is checked
+      if (inputEl.checked) {
+        bypassedSitesCount++;
+      }
     }
 
     // Render custom sites
     const customSites = items.customSites;
     $('#custom_sites').value = customSites.join('\n');
+
+    // Update total bypassed sites count
+    $('#totalSites').textContent = bypassedSitesCount;
 
     // Set select all/none checkbox state.  Note: "indeterminate" checkboxes
     // require `chrome_style: false` be set in manifest.json.  See
@@ -93,6 +103,7 @@ function renderOptions () {
     $('#select-all input').indeterminate = nChecked && nChecked != nItems;
   });
 }
+
 
 // Select/deselect all supported sites
 function selectAll () {

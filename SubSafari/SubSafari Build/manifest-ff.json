@@ -101,14 +101,14 @@
       "128": "src/icons/bypass.png"
     }
   },
-  "description": "Bypass News Sites' Paywalls",
-  "homepage_url": "https://github.com/iamadamdev/bypass-paywalls-chrome/blob/master/README.md",
+  "description": "Imagine you're reading an interesting article on The Washington Times, but suddenly it asks you to pay to keep reading. Frustrating, right? That's where SubSafari comes in – it's like a magic tool for your internet browser that helps you read articles, watch videos, and access cool stuff on websites that usually ask you to pay for it. With SubSafari, you can get around those annoying payment requests and enjoy all that content for free! ",
+  "homepage_url": "https://github.com/creator-warrior/SubSafari?tab=readme-ov-file#subsafa",
   "icons": {
     "128": "src/icon/bypass.png"
   },
   "manifest_version": 2,
-  "name": "Bypass Paywalls",
-  "short_name": "Bypass Paywall",
+  "name": "SubSafari: Browse the web reely",
+  "short_name": "SubSafari",
   "options_ui": {
     "page": "src/html/options.html"
   },

@@ -2,10 +2,70 @@
 <html>
 <head>
    <meta charset="utf-8">
+   <title>SubSafari Extension</title>
+   <style>
+      body {
+         background-color: #f8f9fa;
+         font-family: 'Arial', sans-serif;
+         margin: 0;
+         padding: 0;
+      }
+      .container {
+         width: 350px;
+         margin: 100px auto;
+         padding: 30px;
+         background-color: #f0f8ff;
+         border-radius: 20px;
+         box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+      }
+      h1 {
+         font-size: 28px;
+         color: #007bff;
+         margin-bottom: 20px;
+         text-align: center;
+         text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      }
+      p {
+         font-size: 18px;
+         color: #444;
+         text-align: center;
+         margin-bottom: 30px;
+      }
+      a {
+         display: block;
+         margin: 10px auto;
+         padding: 15px 30px;
+         background-color: #007bff;
+         color: #fff;
+         text-decoration: none;
+         border-radius: 10px;
+         text-align: center;
+         transition: all 0.3s ease;
+         box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      }
+      a:hover {
+         background-color: #0056b3;
+         transform: scale(1.05);
+         box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+      }
+      .credit {
+         font-size: 12px;
+         color: #777;
+         text-align: center;
+         margin-top: 20px;
+      }
+   </style>
 </head>
 <body>
-<div style="width:180px;">Bypass Paywalls by Adam
-<br><a href="options.html">Options</a> | <a href="https://github.com/iamadamdev/bypass-paywalls-chrome" target="_blank">GitHub</a> | <span id="version"></span></div>
+<div class="container">
+   <h1>SubSafari</h1>
+   <p>Browse the web freely with SubSafari</p>
+   <a href="options.html">Options</a>
+   <span style="display: block; height: 5px;"></span><!-- Reducing space -->
+   <a href="https://github.com/creator-warrior/SubSafari/" target="_blank">GitHub</a>
+   <span id="version"></span>
+   <div class="credit">Made by Michael</div>
+</div>
 <script src="../js/common.js"></script>
 <script src="../js/version.js"></script>
 </body>
